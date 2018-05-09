@@ -1,0 +1,22 @@
+]<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nearby Cubs</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item *ngFor="let person of persons">
+      <h2>{{person.name}}</h2>
+      <h3>Grade {{person.grade}}</h3>
+      <h4 *ngIf="person.canDrive">Drives</h4>
+      <h4 *ngIf="!person.canDrive">Does not drive</h4>
+      <h4>{{person.distance}} miles away</h4>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

@@ -1,19 +1,24 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
+import { ContactsPage } from '../contacts/contacts';
+import { MapPage } from '../map/map';
+import { SettingsPage } from '../settings/settings';
+import { SettingsService } from '../../services/settings';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab1Root = MapPage;
+  tab2Root = ContactsPage;
+  tab3Root = SettingsPage;
 
   constructor() {
+
+  }
+
+  ionViewDidLoad() {
 
   }
 }
