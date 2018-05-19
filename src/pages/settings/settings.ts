@@ -4,6 +4,8 @@ import { Storage } from '@ionic/storage';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ToastController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
+import { EditDataPage } from '../edit-data/edit-data';
 
 @Component({
   selector: 'page-settings',
@@ -12,7 +14,8 @@ import { ToastController } from 'ionic-angular';
 export class SettingsPage {
 
   constructor (private alertCtrl: AlertController, private stor: Storage,
-              private toastCtrl: ToastController, private navCtrl: NavController) {}
+              private toastCtrl: ToastController, private navCtrl: NavController,
+                private modalCtrl: ModalController) {}
 
   deleteData() {
     let confirm = this.alertCtrl.create({
@@ -34,12 +37,17 @@ export class SettingsPage {
               duration: 2000
             });
             toast.present();
-            this.navCtrl.setRoot(LoginPage);
           }
         }
       ]
     });
     confirm.present();
+
+  }
+
+  editData() {
+    let modal = this.modalCtrl.create(EditDataPage, {signUp: false});
+    modal.present();
   }
 
 }

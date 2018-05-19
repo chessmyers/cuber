@@ -1,18 +1,58 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-
+<title>Login/Sign Up</title>
 </ion-header>
 
 
 <ion-content padding>
-<ion-list>
+<!-- <ion-list>
   <ion-item>
     <ion-label>Student ID</ion-label>
     <ion-input type="text" id="studentID"></ion-input>
   </ion-item>
     <button ion-button block round large (click)="onSubmit()" text-center>Submit</button>
-</ion-list>
+</ion-list> -->
+<div padding>
+  <ion-segment [(ngModel)]="login">
+    <ion-segment-button value="SignUp" class="segment-activated">
+      Sign Up
+    </ion-segment-button>
+    <ion-segment-button value="LogIn">
+      Log In
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="login">
+  <div *ngSwitchCase="'SignUp'" default>
+    <form #q="ngForm" (ngSubmit)="onSignUp(q)">
+      <ion-list>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input type="text" name="email" [(ngModel)]="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Password</ion-label>
+          <ion-input type="password" name="password" [(ngModel)]="password" required></ion-input>
+        </ion-item>
+      </ion-list>
+    </form>
+    <button ion-button block round large type="submit" text-center color="primary" [disabled]="!q.valid">Sign Up</button>
+  </div>
+
+  <div *ngSwitchCase="'LogIn'">
+    <form #w="ngForm" (ngSubmit)="onLogIn(w)">
+      <ion-list>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input type="text" name="email" [(ngModel)]="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Password</ion-label>
+          <ion-input type="password" name="password" [(ngModel)]="password" required></ion-input>
+        </ion-item>
+      </ion-list>
+    </form>
+    <button ion-button block round large type="submit" text-center color="secondary" [disabled]="!w.valid">Log In</button>
+  </div>
+</div>
 </ion-content>

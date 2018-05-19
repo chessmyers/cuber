@@ -8,6 +8,8 @@ import { MapPage } from '../pages/map/map';
 import { SettingsPage } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login'
+import { EditDataPage } from '../pages/edit-data/edit-data';
+import { AuthService } from '../services/auth';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,7 +22,8 @@ import { IonicStorageModule } from '@ionic/storage';
     MapPage,
     SettingsPage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    EditDataPage
   ],
   imports: [
     BrowserModule,
@@ -34,13 +37,16 @@ import { IonicStorageModule } from '@ionic/storage';
     MapPage,
     SettingsPage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    EditDataPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    
+    AuthService
+
+
   ]
 })
 export class AppModule {}

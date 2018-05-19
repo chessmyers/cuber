@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="isSignUp">Sign Up</ion-title>
+    <ion-title *ngIf="!isSignUp">Edit User Data</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Full Name</ion-label>
+        <ion-input type="text" name="name" [(ngModel)]="name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Address</ion-label>
+        <ion-input type="text" name="address" [(ngModel)]="address" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Grade</ion-label>
+        <ion-select name="grade" [(ngModel)]="grade" required>
+          <ion-option value="9">9th</ion-option>
+          <ion-option value="10">10th</ion-option>
+          <ion-option value="11">11th</ion-option>
+          <ion-option value="12">12th</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Drives (yes/no)</ion-label>
+        <ion-select name="drives" [(ngModel)]="drives" required>
+          <ion-option value="yes">Yes</ion-option>
+          <ion-option value="no">No</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Phone Number</ion-label>
+        <ion-input type="number" name="phoneNum" [(ngModel)]="phoneNum" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email Address</ion-label>
+        <ion-input type="email" name="email" [(ngModel)]="email" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button block large round color="loyola" type="submit" [disabled]="!f.valid">Save Data</button>
+  </form>
+    <button *ngIf="!isSignUp" ion-button block large round color="light" (click)="onCancel()">Cancel</button>
+
+</ion-content>
